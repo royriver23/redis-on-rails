@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: test_redis
+  username: redis_user
+  password:
+  host: localhost

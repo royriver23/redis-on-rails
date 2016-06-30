@@ -1,0 +1,40 @@
+
+
+
+<div class='container'>
+  <div clas='row'>
+  <div class='span2'></div>
+  <div class='span10'>
+    <% if notice %>
+    <p id="notice" class='alert alert-success'><%= notice %></p>
+    <% end %>
+
+    <h1><%= @visits[:global] %> VISITS:</h1>
+    <h3>CHROME: <%= @visits[:chrome] %></h3>
+    <h3>SAFARI: <%= @visits[:safari] %></h3>
+    <h3>OTHERS: <%= @visits[:others] %></h3>
+
+
+    <%= form_tag people_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], size: 30, class: 'form_control' %>
+      <%= submit_tag "Search", name: nil, class: 'btn-primary' %>
+    <% end %>
+
+    <h1>Listing People</h1>
+
+    <div class="list-group">
+      <% @people.each do |person| %>
+        <li class="list-group-item">
+          <h4 class="list-group-item-heading"><%= person.name %></h4>
+          <ul>
+            <div class="list-group-item"><strong>Email:</strong> <%= person.email %></div>
+            <div class="list-group-item"><strong>Address:</strong> <%= formatted_address(person) %></div>
+            <div class="list-group-item"><%= image_tag 'https://s-media-cache-ak0.pinimg.com/736x/b6/cb/32/b6cb32534c8daa645a4b5b97837ee1e5.jpg', class: 'img-circle', height: 120 %></div>
+          </ul>
+        </li>
+      <% end %>
+    </div>
+
+  </div>
+  </div>
+</div>
